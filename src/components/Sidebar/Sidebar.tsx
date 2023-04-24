@@ -1,8 +1,9 @@
 import React from "react";
-import { Box, Text, Flex, Stack } from "@chakra-ui/react";
+import { Box, Card, Text, Flex, Stack } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Navlink from "./Navlink";
+import { LogIn, LogOut } from "react-feather";
 type SidebarProps = {
   display?: any;
   title: string;
@@ -12,29 +13,24 @@ type SidebarProps = {
 const Sidebar: React.FC<SidebarProps> = ({ onClose, title, display }) => {
   const router = useRouter();
   return (
-    <Box
-      borderRight={"1px"}
-      borderRightColor={{ base: "transparent", md: "gray.400" }}
-      h={"full"}
-      w={{ base: "full", md: 60 }}
+    <Card
+      //   borderRightColor={{ base: "transparent", md: "gray.400" }}
+      h={"calc(100vh - 40px)"}
+      //   border={"1px solid"}
+      w={{ base: "full", md: "240px" }}
       pos={"fixed"}
       display={display}
     >
-      <Flex
-        justifyContent={"center"}
-        align={"center"}
-        border="1px solid red"
-        h={"80px"}
-      >
+      <Flex justifyContent={"center"} align={"center"} h={"80px"}>
         <Text color={"brand.200"} fontWeight={"bold"} fontSize={"30px"}>
           Planti
         </Text>
       </Flex>
       <Stack>
-        <Navlink name={"Login"} to={"/login"} />
-        <Navlink name={"register"} to={"/register"} />
+        <Navlink icon={LogIn} name={"Login"} to={"/login"} />
+        <Navlink icon={LogOut} name={"Register"} to={"/register"} />
       </Stack>
-    </Box>
+    </Card>
   );
 };
 export default Sidebar;

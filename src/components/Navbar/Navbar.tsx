@@ -1,21 +1,22 @@
 import React from "react";
-import { Flex } from "@chakra-ui/react";
+import { Flex, Card } from "@chakra-ui/react";
 type NavbarProps = {};
 
 const Navbar: React.FC<NavbarProps> = () => {
   return (
-    <Flex
-      ml={{ base: 0, md: 60 }}
+    <Card
+      mb={"20px"}
+      ml={{ base: 0, md: "260px" }}
       px={"20px"}
       position={"sticky"}
       top={0}
       height={"80px"}
       zIndex={"1"}
-      alignItems={"center"}
-      justifyContent={"space-between"}
+      // alignItems={"center"}
+      // justifyContent={"space-between"}
     >
       navbar
-    </Flex>
+    </Card>
   );
 };
 export default Navbar;

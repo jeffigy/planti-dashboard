@@ -14,12 +14,15 @@ const Navlink: React.FC<NavlinkProps> = ({ name, icon, to }) => {
   return (
     <Link href={to}>
       <Flex
-        p={5}
+        p={"10px 20px"}
         borderLeft={"5px solid"}
         borderColor={isActive ? "brand.200" : "transparent"}
         color={isActive ? "brand.200" : "black"}
+        align={"center"}
+        mb={"10px"}
       >
-        <Text>{name}</Text>
+        {icon && <Icon boxSize={"25px"} as={icon} mr={"20px"} />}
+        <Text fontSize={"20px"}>{name}</Text>
       </Flex>
     </Link>
   );
