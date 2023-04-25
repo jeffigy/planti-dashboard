@@ -1,34 +1,45 @@
 import React from "react";
-import { Box, Card, Text, Flex, Stack } from "@chakra-ui/react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { Card, Stack } from "@chakra-ui/react";
 import Navlink from "./Navlink";
-import { LogIn, LogOut } from "react-feather";
+import {
+  Archive,
+  Layout,
+  LogIn,
+  LogOut,
+  Map,
+  ShoppingBag,
+  Trello,
+} from "react-feather";
+import Branding from "./Branding";
 type SidebarProps = {
   display?: any;
-  title: string;
   onClose: () => void;
 };
-
-const Sidebar: React.FC<SidebarProps> = ({ onClose, title, display }) => {
-  const router = useRouter();
+const NavItems = [
+  { name: "Dashboard", icon: Layout, to: "/" },
+  { name: "My Orders", icon: ShoppingBag, to: "/orders" },
+  { name: "Explore", icon: Map, to: "/explore" },
+  { name: "Featured Products", icon: Archive, to: "/featured" },
+];
+const Sidebar: React.FC<SidebarProps> = ({ onClose, display }) => {
   return (
     <Card
-      //   borderRightColor={{ base: "transparent", md: "gray.400" }}
-      h={"calc(100vh - 40px)"}
-      //   border={"1px solid"}
+      borderRadius={{ base: "none", md: "md" }}
+      h={{ base: "100vh", md: "calc(100vh - 40px)" }}
       w={{ base: "full", md: "240px" }}
       pos={"fixed"}
       display={display}
     >
-      <Flex justifyContent={"center"} align={"center"} h={"80px"}>
-        <Text color={"brand.200"} fontWeight={"bold"} fontSize={"30px"}>
-          Planti
-        </Text>
-      </Flex>
+      <Branding onClose={onClose} />
       <Stack>
-        <Navlink icon={LogIn} name={"Login"} to={"/login"} />
-        <Navlink icon={LogOut} name={"Register"} to={"/register"} />
+        {NavItems.map((item) => (
+          <Navlink
+            key={item.name}
+            icon={item.icon}
+            name={item.name}
+            to={item.to}
+          />
+        ))}
       </Stack>
     </Card>
   );

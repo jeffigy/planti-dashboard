@@ -1,22 +1,40 @@
 import React from "react";
-import { Flex, Card } from "@chakra-ui/react";
-type NavbarProps = {};
+import {
+  Flex,
+  Card,
+  IconButton,
+  useColorModeValue,
+  useColorMode,
+} from "@chakra-ui/react";
+import { SunIcon, MoonIcon } from "@chakra-ui/icons";
+import RightButtons from "./RightButtons";
+import SearchBar from "./SearchBar";
+import WelcomeMessage from "./WelcomeMessage";
+import DrawerButton from "./DrawerButton";
+type NavbarProps = {
+  btnRef: any;
+  onClick: () => void;
+};
 
-const Navbar: React.FC<NavbarProps> = () => {
+const Navbar: React.FC<NavbarProps> = ({ btnRef, onClick }) => {
   return (
-    <Card
-      mb={"20px"}
+    <Flex
+      bg={useColorModeValue("brand.400", "brand.800")}
       ml={{ base: 0, md: "260px" }}
-      px={"20px"}
+      mb={"20px"}
+      // px={"20px"}
       position={"sticky"}
       top={0}
       height={"80px"}
       zIndex={"1"}
-      // alignItems={"center"}
-      // justifyContent={"space-between"}
+      alignItems={"center"}
+      justifyContent={"space-between"}
     >
-      navbar
-    </Card>
+      <DrawerButton btnRef={btnRef} onClick={onClick} />
+      <WelcomeMessage />
+      <SearchBar />
+      <RightButtons />
+    </Flex>
   );
 };
 export default Navbar;

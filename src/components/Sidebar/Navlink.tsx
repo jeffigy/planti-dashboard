@@ -1,7 +1,14 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import { Button, Flex, Icon, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Icon,
+  Text,
+  useColorModeValue,
+} from "@chakra-ui/react";
 type NavlinkProps = {
   name: string;
   icon?: any;
@@ -14,15 +21,23 @@ const Navlink: React.FC<NavlinkProps> = ({ name, icon, to }) => {
   return (
     <Link href={to}>
       <Flex
-        p={"10px 20px"}
-        borderLeft={"5px solid"}
-        borderColor={isActive ? "brand.200" : "transparent"}
-        color={isActive ? "brand.200" : "black"}
+        color={
+          isActive ? "brand.200" : useColorModeValue("gray.500", "gray.200")
+        }
         align={"center"}
-        mb={"10px"}
+        my={"5px"}
       >
-        {icon && <Icon boxSize={"25px"} as={icon} mr={"20px"} />}
-        <Text fontSize={"20px"}>{name}</Text>
+        <Flex
+          w={"5px"}
+          bg={isActive ? "brand.200" : "transparent"}
+          h={"45px"}
+          mr={"20px"}
+          borderRadius={" 0px 5px 5px 0px"}
+        />
+        <Flex py={"10px"}>
+          {icon && <Icon boxSize={"20px"} as={icon} mr={"20px"} />}
+          <Text fontSize={"15px"}>{name}</Text>
+        </Flex>
       </Flex>
     </Link>
   );
