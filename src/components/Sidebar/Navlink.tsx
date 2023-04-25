@@ -16,17 +16,12 @@ type NavlinkProps = {
 };
 
 const Navlink: React.FC<NavlinkProps> = ({ name, icon, to }) => {
+  const color = useColorModeValue("gray.500", "gray.200");
   const router = useRouter();
   const isActive = router.pathname === to;
   return (
     <Link href={to}>
-      <Flex
-        color={
-          isActive ? "brand.200" : useColorModeValue("gray.500", "gray.200")
-        }
-        align={"center"}
-        my={"5px"}
-      >
+      <Flex color={isActive ? "brand.200" : color} align={"center"} my={"5px"}>
         <Flex
           w={"5px"}
           bg={isActive ? "brand.200" : "transparent"}

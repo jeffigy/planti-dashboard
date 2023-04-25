@@ -5,7 +5,6 @@ import {
 } from "@chakra-ui/react";
 import "@fontsource/inter/300.css";
 import "@fontsource/inter/400.css";
-import { mode } from "@chakra-ui/theme-tools";
 const config: ThemeConfig = {
   initialColorMode: "light",
   useSystemColorMode: false,
@@ -26,10 +25,10 @@ export const theme = extendTheme({
     body: "Inter, sans-serif",
   },
   styles: {
-    global: () => ({
+    global: (props: { colorMode: string }) => ({
       body: {
-        bg: useColorModeValue("brand.400", "gray.800"),
-        color: useColorModeValue("gray.600", "white"),
+        backgroundColor: props.colorMode === "light" ? "brand.400" : "gray.800",
+        color: props.colorMode === "light" ? "gray.600" : "white",
       },
     }),
   },

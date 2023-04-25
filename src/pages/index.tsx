@@ -37,7 +37,7 @@ export default function Home() {
             Create and sell extraordinary products
           </Text>
           <Text mb={"20px"} color={"gray.400"} fontSize={"15px"}>
-            The world'first and largest handmade products marketplace
+            The world first and largest handmade products marketplace
           </Text>
           <Flex>
             <Button bg={"white"} mr={"20px"} color={"brand.200"}>

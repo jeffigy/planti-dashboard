@@ -20,13 +20,13 @@ const SearchBar: React.FC<SearchBarProps> = () => {
       maxW={{ md: "200px", lg: "400px" }}
     >
       <InputGroup>
-        <InputLeftElement pointerEvents={"none"} children={<Search />} />
+        <InputLeftElement children={<Search />} />
         <Input
           bg={useColorModeValue("white", "#2d3748")}
           focusBorderColor={useColorModeValue("gray.700", "white")}
           border={"none"}
         />
-        <InputRightElement pointerEvents={"none"} children={<Sliders />} />
+        <InputRightElement children={<Sliders />} />
       </InputGroup>
     </Flex>
   );
